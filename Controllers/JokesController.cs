@@ -26,6 +26,22 @@ namespace jokesApp.Controllers
                           View(await _context.Joke.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Joke'  is null.");
         }
+        //GET: Jokes/ShowSearchForm
+        public async Task<IActionResult> ShowSearchForm()
+        {
+            // leaving the View param blank says by default search for this method's name
+            return _context.Joke != null ?
+               
+                        View() :
+                        Problem("Entity set 'ApplicationDbContext.Joke'  is null.");
+        }
+
+        //GET: Jokes/ShowSearchForm
+        public String ShowSearchResults(String SearchPhrase)
+        {
+            // leaving the View param blank says by default search for this method's name
+            return "You entered " + SearchPhrase;
+        }
 
         // GET: Jokes/Details/5
         public async Task<IActionResult> Details(int? id)
